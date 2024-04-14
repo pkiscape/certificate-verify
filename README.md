@@ -18,8 +18,9 @@ This tool allows you to verify your certificates with its possible issuer(s). By
 
 ## Prerequisites
 
-- End-entity or certificate file in PEM or DER format. File extension doesn't matter.
+- End-entity or certificate file in PEM or DER format. 
 - Issuer or certificate chain file in PEM format
+(File extension doesn't matter for the files)
 
 Install dependencies
 ```
