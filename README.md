@@ -19,8 +19,14 @@ This tool allows you to verify your certificates with its possible issuer(s). By
 ## Prerequisites
 
 - End-entity or certificate file in PEM or DER format. 
-- Issuer or certificate chain file in PEM format
+- Issuer or certificate chain file in PEM format.
 
+If using a certificate chain, remove the end-entity. Enter the certificate chain with the Root at the bottom.
+Example:
+```
+<Intermediate CA>
+<Root CA>
+```
 (File extension doesn't matter for the files)
 
 Install dependencies
