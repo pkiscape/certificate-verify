@@ -79,7 +79,7 @@ def load_certificate_chain(certificate_chain):
     certificate_pem_regex = r"(-----BEGIN CERTIFICATE-----\r?\n.*?-----END CERTIFICATE-----)"
 
     try:
-        with open(certificate_chain, "r") as certificate_chain_file:
+        with open(certificate_chain, "r", encoding="utf-8") as certificate_chain_file:
             loaded_certificates = certificate_chain_file.read()
 
         certificate_list = re.findall(certificate_pem_regex, loaded_certificates, re.DOTALL)
@@ -101,7 +101,7 @@ def get_ski_aki(certificate):
     try:
         sku_value = hex(int.from_bytes(
             certificate.extensions.get_extension_for_class(
-        	    x509.SubjectKeyIdentifier).value.digest, byteorder="big")).removeprefix("0x").upper()
+                x509.SubjectKeyIdentifier).value.digest, byteorder="big")).removeprefix("0x").upper()
         key_id_list.append(sku_value)
     except Exception:
         key_id_list.append("No Subject Key Identifier Found")
@@ -296,7 +296,7 @@ def main():
     if args.issuers:
         # Determines if there's one or multiple certificates in the file
         try:
-            with open(args.issuers, "r") as initial_issuer_file:
+            with open(args.issuers, "r", encoding="utf-8") as initial_issuer_file:
                 opened_initial_issuer_file = initial_issuer_file.readlines()
 
         except FileNotFoundError:
